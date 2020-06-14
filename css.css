@@ -1,0 +1,274 @@
+@import url("/css/fonts/montserrat.css");
+
+html {
+  font-family: Montserrat, Calibri, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  
+  background: #fff;
+  
+  overflow: hidden;
+}
+
+input, select, button {
+  font: inherit;
+}
+
+.flex-center,
+.table .group .item {
+  display: flex;
+  align-items: center;
+}
+
+.table .group .item.data > * {
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.table .group .item.data .label {
+  text-align: right;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.drawing-area {
+  min-width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+  
+  cursor: none;
+  
+  background: #fff;
+}
+
+.frame-container {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  user-select: none;
+  
+  transition:
+    top    .2s ease-out,
+    right  .2s ease-out,
+    bottom .2s ease-out,
+    left   .2s ease-out;
+}
+.frame-container > * {
+  position: absolute;
+}
+
+.frame-container .transparent-bg {
+  background-image: linear-gradient(45deg,
+    #eee 25%,
+    transparent 25%,
+    transparent 75%,
+    #eee 75%,
+    #eee 100%
+  ),          linear-gradient(45deg,
+    #eee 25%,
+    #fff 25%,
+    #fff 75%,
+    #eee 75%,
+    #eee 100%
+  );
+  background-position: 0px 0px, 8px 8px;
+  background-size: 16px 16px;
+}
+
+.frame-container .onion-1 {
+  opacity: .2500;
+}
+.frame-container .onion-2 {
+  opacity: .1250;
+}
+.frame-container .onion-3 {
+  opacity: .0625;
+}
+
+.frame-container {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .6);
+}
+
+.frame-container .buffer {
+  display: none;
+}
+
+.frame-container .drawing {
+  opacity: .6;
+  cursor: none;
+}
+
+.selection {
+  display: none;
+}
+
+.cursor {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+.dialog {
+  position: absolute;
+  padding: 15px 10px 0 10px;
+  box-sizing: border-box;
+  width: 270px;
+  min-height: 30px;
+  max-height: 400px;
+  resize: verical;
+  user-select: none;
+  top: 10px;
+
+  font-size: 12px;
+  text-align: center;
+  
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .4);
+  border-radius: 10px;
+}
+
+.dialog:before {
+  content: attr(data-header);
+  display: block;
+  margin: -15px 0 0 -10px;
+  padding: 1px 0;
+  width: calc(100% + 20px);
+  height: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  
+  border-radius: 10px 10px 0 0;
+  background: #ccc;
+  color: #fff;
+}
+
+.dialog.align-left {
+  left: 10px;
+}
+
+.dialog.align-right {
+  right: 10px;
+}
+
+.dialog .table .group .item {
+  margin: 10px auto;
+}
+
+.dialog .table .group .item.data .label {
+  width: 100px;
+}
+
+.dialog .table .group .item.data .content {
+  width: 150px;
+}
+
+.dialog input[type="number"] {
+  width: 50px;
+  
+  text-align: right;
+}
+
+.frame-info .number {
+  font-size: 16px;
+}
+
+.layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 40px 80px;
+  z-index: 2;
+  overflow-y: auto;
+  
+  background: #fff;
+  
+  transition: opacity .5s ease;
+}
+
+.layer.inactive {
+  pointer-events: none;
+  
+  opacity: 0;
+}
+
+noscript .layer {
+  user-select: none;
+
+  color: #fff;
+  background: #124;
+}
+
+.layer.center {
+  display: table;
+}
+
+.layer.center > * {
+  display: table-cell;
+  vertical-align: middle;
+  margin: 0 auto;
+}
+
+.layer.center .title-text {
+  cursor: default;
+  
+  font-size: 64px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-weight: 800;
+}
+
+.layer .close-button {
+  width: 50px;
+  height: 50px;
+  padding: 9px;
+  margin: 0 auto 40px auto;
+  box-sizing: border-box;
+  border: 3px solid #000;
+  
+  cursor: pointer;
+  opacity: .2;  
+  border-radius: 50%;
+  
+  transition: opacity .2s ease;
+}
+
+.layer .close-button:hover {
+  opacity: .6;
+}
+
+.layer .gif {
+  display: block;
+  margin: 0 auto 40px auto;
+  max-width: 600px;
+  max-height: 450px;
+  
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .4);
+}
+
+.layer .gif-details .table {
+  width: 100%;
+  
+  font-size: 18px;
+}
+
+.layer .gif-details .table .group .item.data {
+  padding: 10px 0;
+}
+
+.layer .gif-details .table .group .item.data:nth-child(even) {
+  background: rgba(0, 0, 0, .05);
+}
+
+.layer .gif-details .table .group .item.data > * {
+  width: calc(100% / 6);
+}

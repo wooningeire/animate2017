@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Animate</title>
+    <meta charset="UTF-8" />
+    <link href="css.css" rel="stylesheet" />
+  
+    <!-- using gif.js by jnordberg - https://github.com/jnordberg/gif.js -->
+    <script src="gif.js" async></script>
+    <script src="gif.worker.js" async></script>
+    
+    <script src="tool.js"></script>
+    <script src="js.js"></script>
+  </head>
+  <body>
+  
+    <div class="drawing-area">
+      <div class="frame-container" style="top: 0; left: 0;">
+        <div class="transparent-bg"></div>
+        <!-- this base64 string is a 1-by-1 transparent PNG -->
+        <img class="onion onion-1" alt="onion-1" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQYV2NgAAIAAAUAAarVyFEAAAAASUVORK5CYII=" />
+        <img class="onion onion-2" alt="onion-2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQYV2NgAAIAAAUAAarVyFEAAAAASUVORK5CYII=" />
+        <img class="onion onion-3" alt="onion-3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQYV2NgAAIAAAUAAarVyFEAAAAASUVORK5CYII=" />
+        <canvas class="frame"></canvas>
+        <canvas class="buffer"></canvas>
+        <canvas class="drawing"></canvas>
+      </div>
+    </div>
+    
+    <canvas class="selection"></canvas>
+      
+    <canvas class="cursor"></canvas>
+    
+    <div class="dialogs">
+      <div class="dialog align-left frame-info" data-header="Frame">
+        <div class="table">
+          <div class="group">
+      
+            <div class="item data">
+              <div class="label">Number</div>
+              <div class="content">
+                <span class="number">1</span>
+                <span class="number-outof">/1</span>
+              </div>
+            </div>
+      
+            <div class="item data">
+              <div class="label">Duration</div>
+              <div class="content">
+                <span class="delay">
+                  <input type="number" value="100" min="15" step="5" />
+                  ms
+                </span>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      
+      <div class="dialog align-left tool-info" data-header="Tool">
+        <div class="table">
+          <div class="group">
+      
+            <div class="item data" title="Line width. Default 8px.">
+              <div class="label">Width</div>
+              <div class="content">
+                <span class="width">
+                  <input type="number" value="8" min="1" />
+                  px
+                </span>
+              </div>
+            </div>
+      
+            <div class="item data">
+              <div class="label">Erase</div>
+              <div class="content">
+                <input type="checkbox" class="erase" />
+              </div>
+            </div>
+      
+            <div class="item data">
+              <div class="label">Fill</div>
+              <div class="content">
+                <input type="checkbox" class="fill" />
+              </div>
+            </div>
+      
+            <div class="item data">
+              <div class="label">Alias</div>
+              <div class="content">
+                <input type="checkbox" class="alias" />
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+    
+      <div class="dialog align-right gif-settings" data-header="GIF Settings">
+        <div class="table">
+          <div class="group">
+      
+            <div class="item data" title="Number of GIF repeats; -1 is infinite. Default -1.">
+              <div class="label">Repeats</div>
+              <div class="content">
+                <span class="repeats">
+                  <input type="number" value="-1" min="-1" />
+                </span>
+              </div>
+            </div>
+      
+            <div class="item data" title="Dithering method. Default 'none'.">
+              <div class="label">Dither</div>
+              <div class="content">
+                <select class="dither">
+                  <option value="">none</option>
+                  <option value="FloydSteinberg">FloydSteinberg</option>
+                  <option value="FalseFloydSteinberg">FalseFloydSteinberg</option>
+                  <option value="Stucki">Stucki</option>
+                  <option value="Atkinson">Atkinson</option>
+                </select>
+
+                <br />
+
+                <div class="flex-center">
+                  <input type="checkbox" class="dither-serpentine" id="gif-dither-serpentine" />
+                  <label for="gif-dither-serpentine">-serpentine</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="item data" title="Pixel sample size interval during rendering. Lower is faster! Default 10.">
+              <div class="label">Render Interval</div>
+              <div class="content">
+                <span class="quality">
+                  <input type="number" value="10" min="1" />
+                  px
+                </span>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="layer inactive">
+      <div class="close-button">
+        <svg width="26" height="26" viewBox="4 4 22 22" xmlns="http://www.w3.org/2000/svg">
+          <path stroke="#000" stroke-width="4" stroke-linecap="square" d="M4,4 L26,26 M4,26 L26,4" />
+        </svg>
+      </div>
+    </div>
+  
+    <noscript>
+      <div class="layer center">
+        <div class="title-text">Please enable JavaScript</div>
+      </div>
+    </noscript>
+    
+  </body>
+</html>
