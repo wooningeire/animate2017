@@ -1,4 +1,4 @@
-# animate *(v2017)*
+# animate *(2017)*
 Single-page app that allows users to create a frame-by-frame animation and export as a GIF.
 
 This `README` was not originally included in the project.
@@ -10,7 +10,6 @@ This `README` was not originally included in the project.
 | <kbd>ArrowLeft</kbd>										| View the previous frame. |
 | <kbd>Shift</kbd> + <kbd>d</kbd>							| Duplicate the current frame. |
 | <kbd>Delete</kbd> 										| Delete the current frame. |
-| <kbd>Shift</kbd> + <kbd>Delete</kbd>						| Delete this frame and all following frames. |
 | <kbd>w</kbd>, <kbd>a</kbd>, <kbd>s</kbd>, <kbd>d</kbd>	| Move the viewport. |
 | <kbd>Ctrl</kbd> + <kbd>z</kbd>							| Undo the last stroke. |
 | <kbd>Ctrl</kbd> + <kbd>y</kbd>							| Redo the last stroke. |
